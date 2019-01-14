@@ -8,6 +8,7 @@
 <p th:if="${message}">
     <span th:text="${message}"></span>
 </p>
+<a href="/list">Back list</a>
 
 <form th:object="${book}" action="/create-book" method="post">
     <fieldset>

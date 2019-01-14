@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 public interface BookService {
     Page<Book> findAll(Pageable pageable);
 
-    Page<Book> findByName(String name, Pageable pageable);
+    Page<Book> findAllByBooksCodeContains(String name, Pageable pageable);
 
     Book findById (Long id);
 

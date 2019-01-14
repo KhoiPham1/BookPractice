@@ -8,6 +8,7 @@
 <p th:if="${message}">
     <span th:text="${message}"></span>
 </p>
+<a href="/list">Back list</a>
 <form action="/edit-book" method="post" th:object="${book}">
     <fieldset>
         <legend>Update Book</legend>
@@ -16,7 +17,7 @@
             <tr>
                 <th>BooksCode</th>
                 <td><input type="text" th:field="*{booksCode}"></td>
-                <td th:if="${#fields.hasErrors('code')}" th:errors="*{booksCode}">BooksCode error</td>
+                <td th:if="${#fields.hasErrors('booksCode')}" th:errors="*{booksCode}">BooksCode error</td>
             </tr>
             <tr>
                 <th>Price</th>

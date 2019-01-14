@@ -2,7 +2,6 @@ package com.codegym.Book12.controller;
 
 import com.codegym.Book12.model.Book;
 import com.codegym.Book12.model.Category;
-import com.codegym.Book12.repository.BookRepository;
 import com.codegym.Book12.service.BookService;
 import com.codegym.Book12.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class BookController {
@@ -84,10 +83,11 @@ public class BookController {
         return "redirect:list";
     }
     @GetMapping("/list-search")
-    public ModelAndView listSearch(@RequestParam("search") String search, Pageable pageable){
-        Page<Book> books = bookService.findByName(search,pageable);
-        ModelAndView modelAndView = new ModelAndView("listSearch");
-        modelAndView.addObject("search",books);
+    public ModelAndView listSearch(@RequestParam("search") Optional<String> search, @PageableDefault(size = 5) Pageable pageable){
+        Page<Book> books = bookService.findAllByBooksCodeContains(search.get(),pageable);
+        ModelAndView modelAndView = new ModelAndView("listsearch");
+        modelAndView.addObject("books",books);
+        modelAndView.addObject("search",search.get());
         return modelAndView;
 
     }

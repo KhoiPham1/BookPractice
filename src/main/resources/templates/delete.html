@@ -5,6 +5,8 @@
     <title>Delete Book</title>
 </head>
 <body>
+<a href="/list">Back list</a>
+
 <form action="/delete-book" method="post" th:object="${book}">
     <table>
         <input type="hidden" th:field="*{id}" name="id">

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+</head>
+<body>
+<p th:if="${message}">
+    <span th:text="${message}"></span>
+</p>
+<form action="/edit-book" method="post" th:object="${book}">
+    <fieldset>
+        <legend>Update Book</legend>
+        <table>
+            <input type="hidden" th:field="*{id}">
+            <tr>
+                <th>BooksCode</th>
+                <td><input type="text" th:field="*{booksCode}"></td>
+                <td th:if="${#fields.hasErrors('code')}" th:errors="*{booksCode}">BooksCode error</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td><input type="text" th:field="*{price}"></td>
+                <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td><input type="text" th:field="*{status}"></td>
+                <td th:if="${#fields.hasErrors('status')}" th:errors="*{status}">Status error</td>
+            </tr>
+            <tr>
+                <th>Discount</th>
+                <td><input type="text" th:field="*{discount}"></td>
+                <td th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}">Discount error</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td><input type="text" th:field="*{company}"></td>
+                <td th:if="${#fields.hasErrors('company')}" th:errors="*{company}">Company error</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td><input type="text" th:field="*{number}"></td>
+                <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number error</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><input type="text" th:field="*{description}"></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description error</td>
+            </tr>
+            <tr>
+                <th><h2>Category</h2></th>
+                <td><select th:field="*{category}">
+                    <option th:each="bk:${category}" th:text="${bk.name}" th:value="${bk.id}"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Delete"></td>
+            </tr>
+        </table>
+
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Book</title>
+</head>
+<body>
+<p th:if="${message}">
+    <span th:text="${message}"></span>
+</p>
+
+<form th:object="${book}" action="/create-book" method="post">
+    <fieldset>
+        <legend>Create Book</legend>
+        <table border="1">
+            <tr>
+                <th>BooksCode</th>
+                <td><input type="text" th:field="*{booksCode}"></td>
+                <td th:if="${#fields.hasErrors('booksCode')}" th:errors="*{booksCode}">BookCode error</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td><input type="text" th:field="*{price}"></td>
+                <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td><input type="text" th:field="*{status}"></td>
+                <td th:if="${#fields.hasErrors('status')}" th:errors="*{status}">Status error</td>
+            </tr>
+            <tr>
+                <th>Discount</th>
+                <td><input type="text" th:field="*{discount}"></td>
+                <td th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}">Discount error</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td><input type="text" th:field="*{company}"></td>
+                <td th:if="${#fields.hasErrors('company')}" th:errors="*{company}">Company error</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td><input type="text" th:field="*{number}"></td>
+                <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number error</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><input type="text" th:field="*{description}"></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Code error</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td><select th:field="*{category}">
+                    <option th:each="pro:${category}" th:text="${pro.name}" th:value="${pro.id}"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Save"></td>
+                <td><input type="reset" value="Cancel"></td>
+            </tr>
+
+        </table>
+
+
+    </fieldset>
+</form>
+
+</body>
+</html>
